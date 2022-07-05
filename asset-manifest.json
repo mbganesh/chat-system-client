@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chat-system-client/static/css/main.4f93d121.css",
+    "main.js": "/chat-system-client/static/js/main.a4ace377.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/chat-system-client/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/chat-system-client/index.html",
+    "main.4f93d121.css.map": "/chat-system-client/static/css/main.4f93d121.css.map",
+    "main.a4ace377.js.map": "/chat-system-client/static/js/main.a4ace377.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/chat-system-client/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4f93d121.css",
+    "static/js/main.a4ace377.js"
+  ]
+}
