@@ -22,7 +22,7 @@ const defaultOptions = {
 
 
 function App() {
-  const socket = io.connect(AppInfo.server_development_api)
+  const socket = io.connect(AppInfo.server_production_api)
 
   const [sendData, setSendData] = useState("")
   const [messageList, setMessageList] = useState([])
