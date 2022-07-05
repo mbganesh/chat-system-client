@@ -1,0 +1,14 @@
+export default {
+  LIGHT_GREEN: '#CEE8E7',
+  LIGHT_GREY: '#F8F7F7',
+  LIGHT_GREY2: '#EAEAEA',
+  DARK_ONE: '#121212',
+  DARK_TWO: '#181818',
+  DARK_THREE: '#404040',
+  DARK_FOUR: '#282828',
+  DARK_FIVE: '#B3B3B3',
+  MAIN_APP_COLOR:'#6742F0',
+  
+
+  
+};
