@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState ,useRef} from 'react';
 import './App.css';
 import io from 'socket.io-client'
 import { IconButton, Paper, Stack, TextField, Typography } from '@mui/material'
@@ -20,15 +20,22 @@ const defaultOptions = {
   }
 };
 
+const isDevelopment = window.location.hostname === 'localhost'
 
 function App() {
-  const socket = io.connect(AppInfo.server_production_api)
+  const socket = io.connect( isDevelopment?  AppInfo.server_development_api: AppInfo.server_production_api)
 
   const [sendData, setSendData] = useState("")
   const [messageList, setMessageList] = useState([])
 
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  }
+
   const handleSendBtn = () => {
-    if (sendData !== '') {
+    if (sendData.trim() !== '') {
       socket.emit('send_msg', { message: sendData })
       setSendData('')
     }
@@ -47,8 +54,16 @@ function App() {
       setMessageList([...messageList, data])
     })
 
+  try {
+    if(messageList.length !== 0){
+      scrollToBottom()
+    }
+  } catch (error) {
+    console.log(error);
+  }
 
   }, [socket])
+
 
   return (
     <Box
@@ -110,6 +125,7 @@ function App() {
                   {
                     messageList.map(obj => (
                       <Stack
+                     
                       key={obj.time}
                         sx={{
                           border: `1px solid ${Colors.MAIN_APP_COLOR}`,
@@ -118,7 +134,12 @@ function App() {
                           padding: 1,
                           margin: 1
                         }}>
-                        <Typography variant='h6' fontWeight='bold'> {obj.text} </Typography>
+                          <div
+                           ref={messagesEndRef}
+                          >
+ <Typography variant='h6' fontWeight='bold'> {obj.text} </Typography>
+                          </div>
+                       
                         <Typography variant='body2'> {obj.time} </Typography>
                       </Stack>
                     ))
